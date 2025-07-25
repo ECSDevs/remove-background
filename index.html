@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片背景去除工具</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page-wrapper">
+        <div class="container">
+            <header>
+                <h1>图片背景去除工具</h1>
+                <p>上传图片，自动去除纯白背景，转换为透明背景</p>
+            </header>
+            
+            <main>
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-content">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7,10 12,15 17,10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <h3>点击上传图片或拖拽到此处</h3>
+                        <p>支持 JPG、PNG、GIF 格式</p>
+                    </div>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                </div>
+            </div>
+            
+            <div class="processing-section" id="processingSection" style="display: none;">
+                <div class="spinner"></div>
+                <p>正在处理图片...</p>
+            </div>
+            
+            <div class="result-section" id="resultSection" style="display: none;">
+                <div class="image-comparison">
+                    <div class="image-container">
+                        <h3>原图</h3>
+                        <img id="originalImage" alt="原图">
+                    </div>
+                    <div class="image-container">
+                        <h3>处理后</h3>
+                        <div class="transparent-bg">
+                            <canvas id="resultCanvas"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <div class="tolerance-control">
+                        <label for="tolerance">容差值 (0-100):</label>
+                        <input type="range" id="tolerance" min="0" max="100" value="10">
+                        <span id="toleranceValue">10</span>
+                    </div>
+                    <div class="buttons">
+                        <button id="reprocessBtn" class="btn btn-secondary">重新处理</button>
+                        <button id="downloadBtn" class="btn btn-primary">下载图片</button>
+                        <button id="resetBtn" class="btn btn-outline">重新上传</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 元素周期表. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
